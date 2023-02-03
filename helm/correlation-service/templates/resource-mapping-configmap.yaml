@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+data:
+  resource_mapping.yaml: |-
+    mapping:
+    - path: "/hybridlist/list"
+      api_id: "9F1D0514-0840-4072-908A-5761E00E6D4A"
+      client_id: ""
+    - path: "/authlist/list"
+      api_id: "9F1D0514-0840-4072-908A-5761E00E6D4A"
+      client_id: "ampc-hybrid-test"
+metadata:
+  name: {{ include "correlation-service.fullname" . }}-resource-mapping
+  namespace: {{ .Release.Namespace }}
