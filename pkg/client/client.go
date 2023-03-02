@@ -72,6 +72,8 @@ func (c *client) GetResource(path string) (service.Resource, error) {
 		return res, err
 	}
 	res.APIID = resCtx.ApiId
+	res.Version = resCtx.Version
+	res.Stage = resCtx.Stage
 	res.ClientID = resCtx.ConsumerId
 
 	return res, nil

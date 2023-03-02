@@ -11,6 +11,8 @@ import (
 type Resource struct {
 	Path     string `yaml:"path"`
 	APIID    string `yaml:"api_id"`
+	Version  string `yaml:"version"`
+	Stage    string `yaml:"stage"`
 	ClientID string `yaml:"client_id"`
 }
 
@@ -66,6 +68,8 @@ func (s *correlationService) GetResourceContext(ctx context.Context, reqCtx *cor
 		if ok {
 			resCtx = &correlation.ResourceContext{
 				ApiId:      res.APIID,
+				Version:    res.Version,
+				Stage:      res.Stage,
 				ConsumerId: res.ClientID,
 			}
 		}

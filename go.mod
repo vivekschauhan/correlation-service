@@ -3,7 +3,7 @@ module github.com/vivekschauhan/correlation-service
 go 1.18
 
 require (
-	github.com/Axway/agent-sdk v1.1.46-0.20230201031807-0b27ac775d23
+	github.com/Axway/agent-sdk v1.1.46-0.20230210201137-6333753691c4
 	github.com/google/uuid v1.3.0
 	github.com/sirupsen/logrus v1.9.0
 	github.com/spf13/cobra v1.6.1

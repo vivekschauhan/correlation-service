@@ -148,7 +148,7 @@ func startClient(cfg *config.Config, log *logrus.Logger) {
 			log.Error("error in getting resource", err)
 			continue
 		}
-		log.Printf("%v", ret)
+		log.Printf("%+v", ret)
 	}
 
 }
