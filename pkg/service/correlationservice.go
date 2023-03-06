@@ -66,16 +66,29 @@ func (s *correlationService) GetResourceContext(ctx context.Context, reqCtx *cor
 		}
 		res, ok := s.resMap.Resources[path]
 		if ok {
+			clientID := res.ClientID
+			if clientID == "" {
+				clientID = s.getClientIDFromHeader(reqCtx)
+			}
+
 			resCtx = &correlation.ResourceContext{
 				ApiId:      res.APIID,
 				Version:    res.Version,
 				Stage:      res.Stage,
-				ConsumerId: res.ClientID,
+				ConsumerId: clientID,
 			}
 		}
 	}
 
 	return resCtx, nil
+}
+
+func (s *correlationService) getClientIDFromHeader(reqCtx *correlation.TransactionContext) string {
+	if authHeaderValue, ok := reqCtx.Request.Headers["x-client-id"]; ok && authHeaderValue != "" {
+		return authHeaderValue
+	}
+
+	return ""
 }
 
 func (s *correlationService) AddResourceMapping(path string, resource Resource) {

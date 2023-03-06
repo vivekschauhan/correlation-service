@@ -3,16 +3,22 @@ kind: ConfigMap
 data:
   resource_mapping.yaml: |-
     mapping:
-    - path: "/hybridlist/list"
+    - path: "/demo-prod-v1/list"
       api_id: "9F1D0514-0840-4072-908A-5761E00E6D4A"
       version: "v1"
       stage: "prod"
-      client_id: ""
-    - path: "/authlist/list"
+    - path: "/demo-test-v1/list"
       api_id: "9F1D0514-0840-4072-908A-5761E00E6D4A"
       version: "v1"
+      stage: "test"
+    - path: "/demo-prod-v2/list"
+      api_id: "9F1D0514-0840-4072-908A-5761E00E6D4A"
+      version: "v2"
       stage: "prod"
-      client_id: "ampc-hybrid-test"
+    - path: "/demo-test-v2/list"
+      api_id: "9F1D0514-0840-4072-908A-5761E00E6D4A"
+      version: "v2"
+      stage: "test"
 metadata:
   name: {{ include "correlation-service.fullname" . }}-resource-mapping
   namespace: {{ .Release.Namespace }}
